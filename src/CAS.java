@@ -1,13 +1,13 @@
 public class CAS {
 
-    private boolean armed = false;
-    private boolean flash = false;
+     boolean armed = false;
+     boolean flash = false;
 
-    private boolean closed = false;
+     boolean closed = false;
 
-    private boolean locked = false;
+     boolean locked = false;
 
-    private boolean sound = false;
+     boolean sound = false;
 
     private enum Loc { L0, L1, L2, L3, L4, L5, L6, L7, L8, L9, L10, L11, L12, L13, L14, L15 };
     private Loc location;
@@ -15,11 +15,12 @@ public class CAS {
         location = Loc.L0;
     }
 
-    private void lock() {
+     void lock() {
         switch (this.location) {
             case L1:
                 locked = true;
                 this.location = Loc.L3;
+                //await input for <2 seconds otherwise call armedOn()!
                 break;
             case L0:
                 locked = true;
@@ -28,7 +29,7 @@ public class CAS {
                 break;
         }
     }
-    private void unlock() {
+     void unlock() {
         switch (this.location) {
             case L3:
                 locked = false;
@@ -51,7 +52,7 @@ public class CAS {
         }
     }
 
-    private void close() {
+     void close() {
         switch (this.location) {
             case L2:
                 closed = true;
@@ -61,27 +62,36 @@ public class CAS {
                 closed = true;
                 this.location = Loc.L1;
                 break;
+            case L7:
+                closed = true;
+                this.location = Loc.L5;
             default:
                 break;
         }
     }
 
-    private void open() {
+     void open() {
         switch (this.location) {
             case L1:
                 closed = false;
+                locked = false;
                 this.location = Loc.L0;
                 break;
             case L3:
                 closed = false;
+                locked = false;
                 this.location = Loc.L2;
                 break;
+            case L4:
+                closed = false;
+                locked = false;
+                this.location = Loc.L8;
             default:
                 break;
         }
     }
 
-    private void armedOn() {
+     void armedOn() {
         switch (this.location) {
             case L3:
                 armed = true;
@@ -96,7 +106,7 @@ public class CAS {
         }
     }
 
-    private void armedOff() {
+     void armedOff() {
         switch (this.location) {
             case L8:
                 armed = false;
@@ -111,7 +121,7 @@ public class CAS {
         }
     }
 
-    private void soundOn() {
+     void soundOn() {
         switch (this.location) {
             case L15:
                 sound = true;
@@ -122,7 +132,7 @@ public class CAS {
         }
     }
 
-    private void soundOff() {
+     void soundOff() {
         switch (this.location) {
             case L12:
                 sound = false;
@@ -141,7 +151,7 @@ public class CAS {
         }
     }
 
-    private void flashOn() {
+     void flashOn() {
         switch (this.location) {
             case L9:
                 flash = true;
@@ -152,7 +162,7 @@ public class CAS {
         }
     }
 
-    private void flashOff() {
+     void flashOff() {
         switch (this.location) {
             case L13:
                 flash = false;
