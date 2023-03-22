@@ -18,7 +18,9 @@ public class Mim {
 
     public String read() {
         String act = actions.peek();
-        actions.remove();
+        if (act != null) {
+            actions.remove();
+        }
         return act;
     }
 }

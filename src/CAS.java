@@ -3,7 +3,9 @@ import java.util.Scanner;
 import java.io.IOException;
 import java.io.InputStreamReader;
 
-public class CAS {
+public class CAS{
+
+
 
      boolean armed = false;
      boolean flash = false;
@@ -14,6 +16,7 @@ public class CAS {
 
      boolean sound = false;
 
+
     private enum Loc { L0, L1, L2, L3, L4, L5, L6, L7, L8, L9, L10, L11, L12, L13, L14, L15 };
     private Loc location;
 
@@ -21,7 +24,35 @@ public class CAS {
     public CAS(Mim mim) {
         location = Loc.L0;
         this.mim = mim;
-        mim.write("output1!");
+    }
+
+
+    public void readInput() {
+        while (true) {
+            String temp = mim.read();
+            if (temp != null) {
+                switch (temp) {
+                    case "open":
+                        open();
+                        break;
+                    case "close":
+                        close();
+                        break;
+                    case "lock":
+                        lock();
+                        break;
+                    case "unlock":
+                        unlock();
+                        break;
+
+                }
+
+                if (temp.equals("done")) {
+                    break;
+                }
+            }
+
+        }
     }
 
      public void lock() {
