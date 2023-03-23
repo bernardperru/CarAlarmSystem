@@ -1,14 +1,12 @@
 public class Main {
     public static void main(String[] args) {
-        Mim mim = new Mim();
 
-        Runnable cas = new ThreadCAS(mim);
-        Runnable user = new ThreadUser(mim);
+        Data data = new Data();
 
-        Thread casThread = new Thread(cas);
-        Thread userThread = new Thread(user);
+        Thread cas = new Thread(new CAS(data));
+        Thread tester = new Thread(new Tester(data));
 
-        casThread.start();
-        userThread.start();
+        tester.start();
+        cas.start();
     }
 }

@@ -3,56 +3,30 @@ import java.util.Scanner;
 import java.io.IOException;
 import java.io.InputStreamReader;
 
-public class CAS{
+import static java.lang.Thread.sleep;
 
+public class CAS implements Runnable{
 
 
      boolean armed = false;
      boolean flash = false;
-
      boolean closed = false;
-
      boolean locked = false;
-
      boolean sound = false;
+
+    @Override
+    public void run() {
+        System.out.println("CAS");
+        data.receive(100000);
+    }
 
 
     private enum Loc { L0, L1, L2, L3, L4, L5, L6, L7, L8, L9, L10, L11, L12, L13, L14, L15 };
     private Loc location;
-
-    private Mim mim;
-    public CAS(Mim mim) {
-        location = Loc.L0;
-        this.mim = mim;
-    }
-
-
-    public void readInput() {
-        while (true) {
-            String temp = mim.read();
-            if (temp != null) {
-                switch (temp) {
-                    case "open":
-                        open();
-                        break;
-                    case "close":
-                        close();
-                        break;
-                    case "lock":
-                        lock();
-                        break;
-                    case "unlock":
-                        unlock();
-                        break;
-
-                }
-
-                if (temp.equals("done")) {
-                    break;
-                }
-            }
-
-        }
+    Data data;
+    public CAS(Data data) {
+        this.data = data;
+        this.location = Loc.L0;
     }
 
      public void lock() {
@@ -61,23 +35,6 @@ public class CAS{
                 locked = true;
                 this.location = Loc.L3;
                 //await input for <2 seconds otherwise call armedOn()!
-                BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
-                try {
-                    if (br.ready()) {
-                        System.out.println(br.readLine());
-                    } else {
-                        Thread.sleep(2000);
-                        if (br.ready()) {
-                            System.out.println(br.readLine());
-                        } else {
-                            System.out.println("armedOn()");
-                        }
-                    }
-                } catch (IOException e) {
-                    e.printStackTrace();
-                } catch (InterruptedException e) {
-                    e.printStackTrace();
-                }
                 break;
             case L0:
                 locked = true;
