@@ -13,13 +13,15 @@ public class CAS {
      public boolean locked = false;
      public boolean sound = false;
 
+     public int c,d = 0;
+
 
     private enum Loc { L0, L1, L2, L3, L4, L5, L6, L7, L8, L9, L10, L11, L12, L13, L14, L15 };
     private Loc location;
     public CAS() {
         this.location = Loc.L0;
     }
-    // hej
+
      public void lock() {
         switch (this.location) {
             case L1:
@@ -195,5 +197,25 @@ public class CAS {
         }
     }
 
-
+    void wait (int delay){
+        c = delay;
+        d = delay;
+        switch (this.location){
+            case L3:
+                if(c == 2){
+                    armedOn();
+                }
+                break;
+            case L10:
+                if (d == 3){
+                    soundOff();
+                }
+                break;
+            case L12:
+                if (d == 30){
+                    soundOff();
+                }
+                break;
+        }
+    }
 }
