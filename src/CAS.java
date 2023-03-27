@@ -13,7 +13,7 @@ public class CAS {
      public boolean locked = false;
      public boolean sound = false;
 
-     public int c,d = 0;
+     public int c,d, globalClock = 0;
 
 
     private enum Loc { L0, L1, L2, L3, L4, L5, L6, L7, L8, L9, L10, L11, L12, L13, L14, L15 };
@@ -27,8 +27,6 @@ public class CAS {
             case L1:
                 locked = true;
                 this.location = Loc.L3;
-                double timestamp = System.currentTimeMillis();
-                //await input for <2 seconds otherwise call armedOn()!
                 break;
             case L0:
                 locked = true;
@@ -66,7 +64,6 @@ public class CAS {
             case L2:
                 closed = true;
                 this.location = Loc.L3;
-                //must delay for 2 seconds to trigger armedOn();
                 break;
             case L0:
                 closed = true;
@@ -75,7 +72,6 @@ public class CAS {
             case L7:
                 closed = true;
                 this.location = Loc.L5;
-                armedOn();
             default:
                 break;
         }
@@ -122,7 +118,6 @@ public class CAS {
             case L8:
                 armed = false;
                 this.location = Loc.L9;
-                flashOn();
                 break;
             case L6:
                 armed = false;
@@ -138,8 +133,6 @@ public class CAS {
             case L15:
                 sound = true;
                 this.location = Loc.L10;
-                double timestamp = System.currentTimeMillis();
-              //delay for 3 seconds
                 break;
             default:
                 break;
@@ -156,14 +149,10 @@ public class CAS {
             case L11:
                 sound = false;
                 this.location = Loc.L14;
-                flashOff();
                 break;
             case L10:
                 sound = false;
                 this.location = Loc.L12;
-
-                double timestamp = System.currentTimeMillis();
-                //delay for 27 seconds
                 break;
             default:
                 break;
@@ -175,7 +164,6 @@ public class CAS {
             case L9:
                 flash = true;
                 this.location = Loc.L15;
-                soundOn();
                 break;
             default:
                 break;
@@ -198,24 +186,60 @@ public class CAS {
     }
 
     void wait (int delay){
-        c = delay;
-        d = delay;
-        switch (this.location){
-            case L3:
-                if(c == 2){
+        c += delay;
+        d += delay;
+        globalClock += delay;
+        switch (this.location) {
+            case L3 -> {
+                if (c == 2) {
                     armedOn();
                 }
-                break;
-            case L10:
-                if (d == 3){
+            }
+            case L10 -> {
+                if (d == 3) {
                     soundOff();
                 }
-                break;
-            case L12:
-                if (d == 30){
+            }
+            case L12 -> {
+                if (d == 30) {
                     soundOff();
                 }
-                break;
+            }
+            case L8, L6 -> {
+                if (d == 0) {
+                    armedOff();
+                }
+            }
+            case L9 -> {
+                if (d == 0) {
+                    flashOn();
+                }
+            }
+            case L15 -> {
+                if (d == 0) {
+                    soundOn();
+                }
+            }
+            case L11 -> {
+                if (d == 0) {
+                    soundOff();
+                }
+            }
+            case L14 -> {
+                if (d == 0) {
+                    flashOff();
+                }
+            }
+            case L13 -> {
+                if (d == 30) {
+                    flashOff();
+                }
+            }
+            case L5 -> {
+                if (d == 0) {
+                    armedOn();
+                }
+            }
         }
     }
 }
