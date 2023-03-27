@@ -5,27 +5,18 @@ import java.io.InputStreamReader;
 
 import static java.lang.Thread.sleep;
 
-public class CAS implements Runnable{
+public class CAS {
 
-
-     boolean armed = false;
-     boolean flash = false;
-     boolean closed = false;
-     boolean locked = false;
-     boolean sound = false;
-
-    @Override
-    public void run() {
-        System.out.println("CAS");
-        data.receive(100000);
-    }
+     public boolean armed = false;
+     public boolean flash = false;
+     public boolean closed = false;
+     public boolean locked = false;
+     public boolean sound = false;
 
 
     private enum Loc { L0, L1, L2, L3, L4, L5, L6, L7, L8, L9, L10, L11, L12, L13, L14, L15 };
     private Loc location;
-    Data data;
-    public CAS(Data data) {
-        this.data = data;
+    public CAS() {
         this.location = Loc.L0;
     }
 
@@ -34,6 +25,7 @@ public class CAS implements Runnable{
             case L1:
                 locked = true;
                 this.location = Loc.L3;
+                double timestamp = System.currentTimeMillis();
                 //await input for <2 seconds otherwise call armedOn()!
                 break;
             case L0:
@@ -56,6 +48,7 @@ public class CAS implements Runnable{
             case L12, L10:
                 locked = false;
                 this.location = Loc.L11;
+                soundOff();
                 break;
             case L4:
                 locked = false;
@@ -71,6 +64,7 @@ public class CAS implements Runnable{
             case L2:
                 closed = true;
                 this.location = Loc.L3;
+                //must delay for 2 seconds to trigger armedOn();
                 break;
             case L0:
                 closed = true;
@@ -79,6 +73,7 @@ public class CAS implements Runnable{
             case L7:
                 closed = true;
                 this.location = Loc.L5;
+                armedOn();
             default:
                 break;
         }
@@ -125,6 +120,7 @@ public class CAS implements Runnable{
             case L8:
                 armed = false;
                 this.location = Loc.L9;
+                flashOn();
                 break;
             case L6:
                 armed = false;
@@ -140,6 +136,8 @@ public class CAS implements Runnable{
             case L15:
                 sound = true;
                 this.location = Loc.L10;
+                double timestamp = System.currentTimeMillis();
+              //delay for 3 seconds
                 break;
             default:
                 break;
@@ -151,14 +149,19 @@ public class CAS implements Runnable{
             case L12:
                 sound = false;
                 this.location = Loc.L13;
+                flashOff();
                 break;
             case L11:
                 sound = false;
                 this.location = Loc.L14;
+                flashOff();
                 break;
             case L10:
                 sound = false;
                 this.location = Loc.L12;
+
+                double timestamp = System.currentTimeMillis();
+                //delay for 27 seconds
                 break;
             default:
                 break;
@@ -170,6 +173,7 @@ public class CAS implements Runnable{
             case L9:
                 flash = true;
                 this.location = Loc.L15;
+                soundOn();
                 break;
             default:
                 break;
