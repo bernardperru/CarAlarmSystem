@@ -19,7 +19,7 @@ public class CAS {
     public CAS() {
         this.location = Loc.L0;
     }
-
+    // hej
      public void lock() {
         switch (this.location) {
             case L1:
