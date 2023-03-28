@@ -48,7 +48,6 @@ public class CAS {
             case L12, L10:
                 locked = false;
                 this.location = Loc.L11;
-                soundOff();
                 break;
             case L4:
                 locked = false;
@@ -81,17 +80,14 @@ public class CAS {
         switch (this.location) {
             case L1:
                 closed = false;
-                locked = false;
                 this.location = Loc.L0;
                 break;
             case L3:
                 closed = false;
-                locked = false;
                 this.location = Loc.L2;
                 break;
             case L4:
                 closed = false;
-                locked = false;
                 this.location = Loc.L8;
             default:
                 break;
@@ -105,7 +101,7 @@ public class CAS {
                 this.location = Loc.L4;
                 break;
             case L5:
-                closed = true;
+                armed = true;
                 this.location = Loc.L4;
                 break;
             default:
@@ -144,7 +140,6 @@ public class CAS {
             case L12:
                 sound = false;
                 this.location = Loc.L13;
-                flashOff();
                 break;
             case L11:
                 sound = false;
