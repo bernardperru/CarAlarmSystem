@@ -223,6 +223,11 @@ public class TestClass {
         assert(!cas.armed && !cas.locked && !cas.closed && !cas.sound && !cas.flash);
         assert(  cas.d- cas.c<=0 &&  cas.g- cas.c<=0 &&  cas.c- cas.d<=0 &&  cas.g- cas.d<=0 &&  cas.c- cas.g<=0 &&  cas.d- cas.g<=0);
         cas.wait(0);
+        cas.close();
+        assert(  cas.d- cas.c<=0 &&  cas.g- cas.c<=0 &&  cas.c- cas.d<=0 &&  cas.g- cas.d<=0 &&  cas.c- cas.g<=0 &&  cas.d- cas.g<=0);
+        assert(!cas.armed && !cas.locked && cas.closed && !cas.sound && !cas.flash);
+        assert(  cas.d- cas.c<=0 &&  cas.g- cas.c<=0 &&  cas.c- cas.d<=0 &&  cas.g- cas.d<=0 &&  cas.c- cas.g<=0 &&  cas.d- cas.g<=0);
+        cas.wait(0);
         cas.lock();
         cas.c = 0;
         assert(  cas.c<=2 &&  cas.c- cas.d<=0 &&  cas.g- cas.d<=0 &&  cas.c- cas.g<=0 &&  cas.d- cas.g<=0);
@@ -246,6 +251,11 @@ public class TestClass {
         cas.open();
         assert(  cas.d- cas.c<=0 &&  cas.g- cas.c<=0 &&  cas.c- cas.d<=0 &&  cas.g- cas.d<=0 &&  cas.c- cas.g<=0 &&  cas.d- cas.g<=0);
         assert(!cas.armed && !cas.locked && !cas.closed && !cas.sound && !cas.flash);
+        assert(  cas.d- cas.c<=0 &&  cas.g- cas.c<=0 &&  cas.c- cas.d<=0 &&  cas.g- cas.d<=0 &&  cas.c- cas.g<=0 &&  cas.d- cas.g<=0);
+        cas.wait(0);
+        cas.close();
+        assert(  cas.d- cas.c<=0 &&  cas.g- cas.c<=0 &&  cas.c- cas.d<=0 &&  cas.g- cas.d<=0 &&  cas.c- cas.g<=0 &&  cas.d- cas.g<=0);
+        assert(!cas.armed && !cas.locked && cas.closed && !cas.sound && !cas.flash);
         assert(  cas.d- cas.c<=0 &&  cas.g- cas.c<=0 &&  cas.c- cas.d<=0 &&  cas.g- cas.d<=0 &&  cas.c- cas.g<=0 &&  cas.d- cas.g<=0);
         cas.wait(0);
         cas.lock();
@@ -493,6 +503,11 @@ public class TestClass {
         assert(!cas.armed && !cas.locked && !cas.closed && !cas.sound && !cas.flash);
         assert(  cas.c>=32 &&  cas.d>=30 &&  cas.g>=32 &&  cas.d- cas.c<=-2 &&  cas.c- cas.g<=0 &&  cas.d- cas.g<=-2);
         cas.wait(0);
+        cas.close();
+        assert(  cas.c>=32 &&  cas.d>=30 &&  cas.g>=32 &&  cas.d- cas.c<=-2 &&  cas.c- cas.g<=0 &&  cas.d- cas.g<=-2);
+        assert(!cas.armed && !cas.locked && cas.closed && !cas.sound && !cas.flash);
+        assert(  cas.c>=32 &&  cas.d>=30 &&  cas.g>=32 &&  cas.d- cas.c<=-2 &&  cas.c- cas.g<=0 &&  cas.d- cas.g<=-2);
+        cas.wait(0);
         cas.lock();
         cas.c = 0;
         assert(  cas.c<=2 &&  cas.d>=30 &&  cas.g>=32 &&  cas.c- cas.d<=-30 &&  cas.c- cas.g<=-32 &&  cas.d- cas.g<=-2);
@@ -503,7 +518,7 @@ public class TestClass {
         assert(cas.armed && cas.locked && cas.closed && !cas.sound && !cas.flash);
     }
     @Test
-    public void test14() {
+    public void test14() { //sound can either be on or off in this location -> fix.
         assert(  cas.d- cas.c<=0 &&  cas.g- cas.c<=0 &&  cas.c- cas.d<=0 &&  cas.g- cas.d<=0 &&  cas.c- cas.g<=0 &&  cas.d- cas.g<=0);
         assert(!cas.armed && !cas.locked && !cas.closed && !cas.sound && !cas.flash);
         assert(  cas.d- cas.c<=0 &&  cas.g- cas.c<=0 &&  cas.c- cas.d<=0 &&  cas.g- cas.d<=0 &&  cas.c- cas.g<=0 &&  cas.d- cas.g<=0);
@@ -554,7 +569,7 @@ public class TestClass {
         assert(  cas.c>2 &&  cas.g>=5 &&  cas.d- cas.c<-2 &&  cas.c- cas.g<=0 &&  cas.d- cas.g<=-5);
     }
     @Test
-    public void test15() {
+    public void test15() { // sound can either be on or off in this location
         assert(  cas.d- cas.c<=0 &&  cas.g- cas.c<=0 &&  cas.c- cas.d<=0 &&  cas.g- cas.d<=0 &&  cas.c- cas.g<=0 &&  cas.d- cas.g<=0);
         assert(!cas.armed && !cas.locked && !cas.closed && !cas.sound && !cas.flash);
         cas.wait(0);
@@ -607,7 +622,7 @@ public class TestClass {
 
     //failing test maybe
     @Test
-    public void test16() {
+    public void test16() { //failing test case attempts to unlock after 27 seconds in L12
         assert(  cas.d- cas.c<=0 &&  cas.g- cas.c<=0 &&  cas.c- cas.d<=0 &&  cas.g- cas.d<=0 &&  cas.c- cas.g<=0 &&  cas.d- cas.g<=0);
         assert(!cas.armed && !cas.locked && !cas.closed && !cas.sound && !cas.flash);
         cas.wait(0);
@@ -660,7 +675,7 @@ public class TestClass {
 
     //failing test maybe
     @Test
-    public void test17() {
+    public void test17() { //same as 16
         assert(  cas.d- cas.c<=0 &&  cas.g- cas.c<=0 &&  cas.c- cas.d<=0 &&  cas.g- cas.d<=0 &&  cas.c- cas.g<=0 &&  cas.d- cas.g<=0);
         assert(!cas.armed && !cas.locked && !cas.closed && !cas.sound && !cas.flash);
         cas.wait(0);
@@ -713,7 +728,7 @@ public class TestClass {
 
     //failing test maybe
     @Test
-    public void test18() {
+    public void test18() { //problem with L11 sound can both be off and on
         assert(  cas.d- cas.c<=0 &&  cas.g- cas.c<=0 &&  cas.c- cas.d<=0 &&  cas.g- cas.d<=0 &&  cas.c- cas.g<=0 &&  cas.d- cas.g<=0);
         assert(!cas.armed && !cas.locked && !cas.closed && !cas.sound && !cas.flash);
         assert(  cas.d- cas.c<=0 &&  cas.g- cas.c<=0 &&  cas.c- cas.d<=0 &&  cas.g- cas.d<=0 &&  cas.c- cas.g<=0 &&  cas.d- cas.g<=0);

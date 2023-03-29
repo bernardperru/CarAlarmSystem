@@ -235,6 +235,9 @@ public class CAS {
                     armedOn();
                 }
             }
+            case L0 -> {
+                break;
+            }
         }
     }
 }
