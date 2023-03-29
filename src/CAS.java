@@ -16,7 +16,7 @@ public class CAS {
      public int c,d, g = 0;
 
 
-    private enum Loc { L0, L1, L2, L3, L4, L5, L6, L7, L8, L9, L10, L11, L12, L13, L14, L15 };
+    private enum Loc { L0, L1, L2, L3, L4, L5, L6, L7, L8, L9, L10, L11, L12, L13, L14, L15, L16 };
     private Loc location;
     public CAS() {
         this.location = Loc.L0;
@@ -45,9 +45,13 @@ public class CAS {
                 locked = false;
                 this.location = Loc.L0;
                 break;
-            case L12, L10:
+            case L12:
                 locked = false;
                 this.location = Loc.L11;
+                break;
+            case L10:
+                locked = false;
+                this.location = Loc.L16;
                 break;
             case L4:
                 locked = false;
@@ -149,6 +153,10 @@ public class CAS {
                 sound = false;
                 this.location = Loc.L12;
                 break;
+            case L16:
+                sound = false;
+                this.location = Loc.L11;
+                break;
             default:
                 break;
         }
@@ -233,6 +241,11 @@ public class CAS {
             case L5 -> {
                 if (d == 0) {
                     armedOn();
+                }
+            }
+            case L16 -> {
+                if (d == 0) {
+                    soundOff();
                 }
             }
             case L0 -> {
