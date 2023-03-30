@@ -194,6 +194,7 @@ public class CAS {
         g += delay;
         switch (this.location) {
             case L3 -> {
+
                 if (c == 2) {
                     armedOn();
                 }
