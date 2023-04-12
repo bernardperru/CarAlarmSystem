@@ -1,27 +1,17 @@
-import java.io.BufferedReader;
-import java.util.Scanner;
-import java.io.IOException;
-import java.io.InputStreamReader;
-
-import static java.lang.Thread.sleep;
+package com.c;
 
 public class CAS {
-
      public boolean armed = false;
      public boolean flash = false;
      public boolean closed = false;
      public boolean locked = false;
      public boolean sound = false;
-
      public int c,d, g = 0;
-
-
-    private enum Loc { L0, L1, L2, L3, L4, L5, L6, L7, L8, L9, L10, L11, L12, L13, L14, L15, L16 };
-    private Loc location;
-    public CAS() {
+     private enum Loc { L0, L1, L2, L3, L4, L5, L6, L7, L8, L9, L10, L11, L12, L13, L14, L15, L16 };
+     private Loc location;
+     public CAS() {
         this.location = Loc.L0;
     }
-
      public void lock() {
         switch (this.location) {
             case L1:
@@ -35,7 +25,7 @@ public class CAS {
                 break;
         }
     }
-     void unlock() {
+     public void unlock() {
         switch (this.location) {
             case L3:
                 locked = false;
@@ -61,8 +51,7 @@ public class CAS {
                 break;
         }
     }
-
-     void close() {
+     public void close() {
         switch (this.location) {
             case L2:
                 closed = true;
@@ -79,8 +68,7 @@ public class CAS {
                 break;
         }
     }
-
-     void open() {
+     public void open() {
         switch (this.location) {
             case L1:
                 closed = false;
@@ -97,7 +85,6 @@ public class CAS {
                 break;
         }
     }
-
      void armedOn() {
         switch (this.location) {
             case L3:
@@ -112,7 +99,6 @@ public class CAS {
                 break;
         }
     }
-
      void armedOff() {
         switch (this.location) {
             case L8:
@@ -127,7 +113,6 @@ public class CAS {
                 break;
         }
     }
-
      void soundOn() {
         switch (this.location) {
             case L15:
@@ -138,7 +123,6 @@ public class CAS {
                 break;
         }
     }
-
      void soundOff() {
         switch (this.location) {
             case L12:
@@ -161,7 +145,6 @@ public class CAS {
                 break;
         }
     }
-
      void flashOn() {
         switch (this.location) {
             case L9:
@@ -172,7 +155,6 @@ public class CAS {
                 break;
         }
     }
-
      void flashOff() {
         switch (this.location) {
             case L13:
@@ -187,69 +169,82 @@ public class CAS {
                 break;
         }
     }
+    public void wait (int delay){
 
-    void wait (int delay){
-        c += delay;
-        d += delay;
-        g += delay;
-        switch (this.location) {
-            case L3 -> {
+        while (delay >= 0) {
+            if (delay > 0) {
+                c++;
+                d++;
+                g++;
+            }
+            delay--;
 
-                if (c == 2) {
-                    armedOn();
+            switch (this.location) {
+                case L3 -> {
+                    if (c == 20) {
+                        armedOn();
+                    }
+                }
+                case L10 -> {
+                    if (d == 30) {
+                        soundOff();
+                    }
+                }
+                case L12 -> {
+                    if (d == 300) {
+                        soundOff();
+                    }
+                }
+                case L8 -> {
+                    if (d == 0) {
+                        armedOff();
+                    }
+                }
+                case L6 -> {
+                    if (d == 0) {
+                        armedOff();
+                    }
+                }
+                case L9 -> {
+                    if (d == 0) {
+                        flashOn();
+                    }
+                }
+                case L15 -> {
+                    if (d == 0) {
+                        soundOn();
+                    }
+                }
+                case L11 -> {
+                    if (d == 0) {
+                        soundOff();
+                    }
+                }
+                case L14 -> {
+                    if (d == 0) {
+                        flashOff();
+                    }
+                }
+                case L13 -> {
+                    if (d == 300) {
+                        flashOff();
+                    }
+                }
+                case L5 -> {
+                    if (d == 0) {
+                        armedOn();
+                    }
+                }
+                case L16 -> {
+                    if (d == 0) {
+                        soundOff();
+                    }
+                }
+                case L0 -> {
+                    break;
                 }
             }
-            case L10 -> {
-                if (d == 3) {
-                    soundOff();
-                }
-            }
-            case L12 -> {
-                if (d == 30) {
-                    soundOff();
-                }
-            }
-            case L8, L6 -> {
-                if (d == 0) {
-                    armedOff();
-                }
-            }
-            case L9 -> {
-                if (d == 0) {
-                    flashOn();
-                }
-            }
-            case L15 -> {
-                if (d == 0) {
-                    soundOn();
-                }
-            }
-            case L11 -> {
-                if (d == 0) {
-                    soundOff();
-                }
-            }
-            case L14 -> {
-                if (d == 0) {
-                    flashOff();
-                }
-            }
-            case L13 -> {
-                if (d == 30) {
-                    flashOff();
-                }
-            }
-            case L5 -> {
-                if (d == 0) {
-                    armedOn();
-                }
-            }
-            case L16 -> {
-                if (d == 0) {
-                    soundOff();
-                }
-            }
-            case L0 -> {
+            if (delay == 0) {
                 break;
             }
         }
