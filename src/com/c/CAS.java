@@ -6,11 +6,23 @@ public class CAS {
      public boolean closed = false;
      public boolean locked = false;
      public boolean sound = false;
+     public boolean ping = false;
      public int c,d, g = 0;
      private enum Loc { L0, L1, L2, L3, L4, L5, L6, L7, L8, L9, L10, L11, L12, L13, L14, L15, L16 };
      private Loc location;
      public CAS() {
         this.location = Loc.L0;
+    }
+
+    public void ping() {
+        switch (this.location) {
+            case L4:
+                ping = true;
+                this.location = Loc.L4;
+                break;
+            default:
+                break;
+        }
     }
      public void lock() {
         switch (this.location) {
@@ -170,7 +182,6 @@ public class CAS {
         }
     }
     public void wait (int delay){
-
         while (delay >= 0) {
             if (delay > 0) {
                 c++;
@@ -184,6 +195,9 @@ public class CAS {
                     if (c == 20) {
                         armedOn();
                     }
+                }
+                case L4 -> {
+                    ping();
                 }
                 case L10 -> {
                     if (d == 30) {
@@ -239,9 +253,6 @@ public class CAS {
                     if (d == 0) {
                         soundOff();
                     }
-                }
-                case L0 -> {
-                    break;
                 }
             }
             if (delay == 0) {
