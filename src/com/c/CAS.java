@@ -1,181 +1,170 @@
 package com.c;
 
 public class CAS {
-     public boolean armed = false;
-     public boolean flash = false;
-     public boolean closed = false;
-     public boolean locked = false;
-     public boolean sound = false;
-     public boolean ping = false;
-     public int c,d, g = 0;
+     public boolean armed;
+     public boolean flash;
+     public boolean closed;
+     public boolean locked;
+     public boolean sound;
+     public int c,d, g;
      private enum Loc { L0, L1, L2, L3, L4, L5, L6, L7, L8, L9, L10, L11, L12, L13, L14, L15, L16 };
      private Loc location;
      public CAS() {
-        this.location = Loc.L0;
+        location = Loc.L0;
     }
 
-    public void ping() {
-        switch (this.location) {
-            case L4:
-                ping = true;
-                this.location = Loc.L4;
-                break;
-            default:
-                break;
-        }
-    }
      public void lock() {
-        switch (this.location) {
+        switch (location) {
             case L1:
                 locked = true;
-                this.location = Loc.L3;
+                location = Loc.L3;
                 break;
             case L0:
                 locked = true;
-                this.location = Loc.L2;
+                location = Loc.L2;
             default:
                 break;
         }
     }
      public void unlock() {
-        switch (this.location) {
+        switch (location) {
             case L3:
                 locked = false;
-                this.location = Loc.L1;
+                location = Loc.L1;
                 break;
             case L2, L7:
                 locked = false;
-                this.location = Loc.L0;
+                location = Loc.L0;
                 break;
             case L12:
                 locked = false;
-                this.location = Loc.L11;
+                location = Loc.L11;
                 break;
             case L10:
                 locked = false;
-                this.location = Loc.L16;
+                location = Loc.L16;
                 break;
             case L4:
                 locked = false;
-                this.location = Loc.L6;
+                location = Loc.L6;
                 break;
             default:
                 break;
         }
     }
      public void close() {
-        switch (this.location) {
+        switch (location) {
             case L2:
                 closed = true;
-                this.location = Loc.L3;
+                location = Loc.L3;
                 break;
             case L0:
                 closed = true;
-                this.location = Loc.L1;
+                location = Loc.L1;
                 break;
             case L7:
                 closed = true;
-                this.location = Loc.L5;
+                location = Loc.L5;
             default:
                 break;
         }
     }
      public void open() {
-        switch (this.location) {
+        switch (location) {
             case L1:
                 closed = false;
-                this.location = Loc.L0;
+                location = Loc.L0;
                 break;
             case L3:
                 closed = false;
-                this.location = Loc.L2;
+                location = Loc.L2;
                 break;
             case L4:
                 closed = false;
-                this.location = Loc.L8;
+                location = Loc.L8;
             default:
                 break;
         }
     }
      void armedOn() {
-        switch (this.location) {
+        switch (location) {
             case L3:
                 armed = true;
-                this.location = Loc.L4;
+                location = Loc.L4;
                 break;
             case L5:
                 armed = true;
-                this.location = Loc.L4;
+                location = Loc.L4;
                 break;
             default:
                 break;
         }
     }
      void armedOff() {
-        switch (this.location) {
+        switch (location) {
             case L8:
                 armed = false;
-                this.location = Loc.L9;
+                location = Loc.L9;
                 break;
             case L6:
                 armed = false;
-                this.location = Loc.L1;
+                location = Loc.L1;
                 break;
             default:
                 break;
         }
     }
      void soundOn() {
-        switch (this.location) {
+        switch (location) {
             case L15:
                 sound = true;
-                this.location = Loc.L10;
+                location = Loc.L10;
                 break;
             default:
                 break;
         }
     }
      void soundOff() {
-        switch (this.location) {
+        switch (location) {
             case L12:
                 sound = false;
-                this.location = Loc.L13;
+                location = Loc.L13;
                 break;
             case L11:
                 sound = false;
-                this.location = Loc.L14;
+                location = Loc.L14;
                 break;
             case L10:
                 sound = false;
-                this.location = Loc.L12;
+                location = Loc.L12;
                 break;
             case L16:
                 sound = false;
-                this.location = Loc.L11;
+                location = Loc.L11;
                 break;
             default:
                 break;
         }
     }
      void flashOn() {
-        switch (this.location) {
+        switch (location) {
             case L9:
                 flash = true;
-                this.location = Loc.L15;
+                location = Loc.L15;
                 break;
             default:
                 break;
         }
     }
      void flashOff() {
-        switch (this.location) {
+        switch (location) {
             case L13:
                 flash = false;
-                this.location = Loc.L7;
+                location = Loc.L7;
                 break;
             case L14:
                 flash = false;
-                this.location = Loc.L0;
+                location = Loc.L0;
                 break;
             default:
                 break;
@@ -190,14 +179,11 @@ public class CAS {
             }
             delay--;
 
-            switch (this.location) {
+            switch (location) {
                 case L3 -> {
                     if (c == 20) {
                         armedOn();
                     }
-                }
-                case L4 -> {
-                    ping();
                 }
                 case L10 -> {
                     if (d == 30) {
