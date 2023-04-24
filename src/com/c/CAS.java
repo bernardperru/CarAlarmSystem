@@ -42,7 +42,7 @@ public class CAS {
                 break;
             case L10:
                 locked = false;
-                location = Loc.L16;
+                location = Loc.L11;
                 break;
             case L4:
                 locked = false;
@@ -138,10 +138,6 @@ public class CAS {
                 sound = false;
                 location = Loc.L12;
                 break;
-            case L16:
-                sound = false;
-                location = Loc.L11;
-                break;
             default:
                 break;
         }
@@ -233,11 +229,6 @@ public class CAS {
                 case L5 -> {
                     if (d == 0) {
                         armedOn();
-                    }
-                }
-                case L16 -> {
-                    if (d == 0) {
-                        soundOff();
                     }
                 }
             }

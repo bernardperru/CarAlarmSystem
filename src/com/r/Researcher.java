@@ -5,7 +5,6 @@ import java.util.Objects;
 public class Researcher {
 
     public enum Loc {L6, L7, L9, U0};
-
     public int x, g;
     public Loc location = Loc.L6;
     public boolean cof, tea;
@@ -55,30 +54,31 @@ public class Researcher {
     }
 
     public void wait (int delay) {
-        while (delay >= 0) {
-            if (delay > 0) {
-                x++;
-                g++;
-            }
-            delay--;
 
-            switch (this.location) {
-                case L9:
-                    if (x == 4) {
-                        pub();
-                        return;
-                    }
-                case L7:
-                    if (x == 8) {
-                        pub();
-                        return;
-                    }
-                default:
-                    break;
-            }
-            if (delay == 0) {
+        if (delay != 0) {
+            x++;
+            g++;
+            delay--;
+        }
+
+
+        switch (this.location) {
+            case L9:
+                if (x == 4) {
+                    pub();
+                    return;
+                }
+            case L7:
+                if (x == 8) {
+                    pub();
+                    return;
+                }
+            default:
                 break;
-            }
+        }
+        if (delay > 0) {
+            wait(delay);
         }
     }
+
 }
