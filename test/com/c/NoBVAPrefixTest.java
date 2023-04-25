@@ -542,5 +542,4 @@ public class NoBVAPrefixTest {
         assertTrue(cas.c>=20 && cas.d>=20 && cas.g>=40 && cas.c-cas.d<=0 && cas.c-cas.g<=-20 && cas.d-cas.g<=-20);
     }
 
-
 }
