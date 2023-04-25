@@ -7,7 +7,7 @@ public class CAS {
      public boolean locked;
      public boolean sound;
      public int c,d, g;
-     private enum Loc { L0, L1, L2, L3, L4, L5, L6, L7, L8, L9, L10, L11, L12, L13, L14, L15, L16 };
+     private enum Loc { L0, L1, L2, L3, L4, L5, L6, L7, L8, L9, L10, L11, L12, L13, L14, L15};
      private Loc location;
      public CAS() {
         location = Loc.L0;
@@ -22,6 +22,7 @@ public class CAS {
             case L0:
                 locked = true;
                 location = Loc.L2;
+                break;
             default:
                 break;
         }
@@ -65,6 +66,7 @@ public class CAS {
             case L7:
                 closed = true;
                 location = Loc.L5;
+                break;
             default:
                 break;
         }
@@ -82,6 +84,7 @@ public class CAS {
             case L4:
                 closed = false;
                 location = Loc.L8;
+                break;
             default:
                 break;
         }
@@ -176,61 +179,63 @@ public class CAS {
             delay--;
 
             switch (location) {
-                case L3 -> {
+                case L3:
                     if (c == 20) {
                         armedOn();
                     }
-                }
-                case L10 -> {
+                    break;
+                case L10:
                     if (d == 30) {
                         soundOff();
                     }
-                }
-                case L12 -> {
+                    break;
+                case L12:
                     if (d == 300) {
                         soundOff();
                     }
-                }
-                case L8 -> {
+                    break;
+                case L8:
                     if (d == 0) {
                         armedOff();
                     }
-                }
-                case L6 -> {
+                    break;
+                case L6:
                     if (d == 0) {
                         armedOff();
                     }
-                }
-                case L9 -> {
+                    break;
+                case L9:
                     if (d == 0) {
                         flashOn();
                     }
-                }
-                case L15 -> {
+                    break;
+                case L15:
                     if (d == 0) {
                         soundOn();
                     }
-                }
-                case L11 -> {
+                    break;
+                case L11:
                     if (d == 0) {
                         soundOff();
                     }
-                }
-                case L14 -> {
+                    break;
+                case L14:
                     if (d == 0) {
                         flashOff();
                     }
-                }
-                case L13 -> {
+                    break;
+                case L13:
                     if (d == 300) {
                         flashOff();
                     }
-                }
-                case L5 -> {
+                    break;
+                case L5:
                     if (d == 0) {
                         armedOn();
                     }
-                }
+                    break;
+                default:
+                    break;
             }
             if (delay == 0) {
                 break;
