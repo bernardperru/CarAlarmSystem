@@ -171,12 +171,6 @@ public class CAS {
     }
     public void wait (int delay){
         while (delay >= 0) {
-            if (delay > 0) {
-                c++;
-                d++;
-                g++;
-            }
-            delay--;
 
             switch (location) {
                 case L3:
@@ -237,7 +231,14 @@ public class CAS {
                 default:
                     break;
             }
-            if (delay == 0) {
+
+            if (delay > 0) {
+                c++;
+                d++;
+                g++;
+                delay--;
+            }
+            else {
                 break;
             }
         }
