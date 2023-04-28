@@ -232,15 +232,10 @@ public class CAS {
                     break;
             }
 
-            if (delay > 0) {
-                c++;
-                d++;
-                g++;
-                delay--;
-            }
-            else {
-                break;
-            }
+            c++;
+            d++;
+            g++;
+            delay--;
         }
     }
 }

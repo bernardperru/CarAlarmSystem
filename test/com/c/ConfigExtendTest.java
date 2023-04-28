@@ -4,10 +4,9 @@ import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-public class NoBVANoPrefixTest {
+public class ConfigExtendTest {
 
     CAS cas = new CAS();
-
     @Test
     public void test0() {
         assertTrue(cas.d-cas.c<=0 && cas.g-cas.c<=0 && cas.c-cas.d<=0 && cas.g-cas.d<=0 && cas.c-cas.g<=0 && cas.d-cas.g<=0);
@@ -352,11 +351,6 @@ public class NoBVANoPrefixTest {
         assertTrue(cas.c>=50 && cas.d>=30 && cas.d<=300 && cas.g>=50 && cas.d-cas.c<=-20 && cas.c-cas.g<=0 && cas.d-cas.g<=-20);
         cas.wait(270);
         assertTrue(cas.c>=50 && cas.d>=30 && cas.d<=300 && cas.g>=50 && cas.d-cas.c<=-20 && cas.c-cas.g<=0 && cas.d-cas.g<=-20);
-//L13
-        assertTrue(cas.locked && !cas.armed && !cas.closed && !cas.sound && cas.flash);
-        assertTrue(cas.c>=320 && cas.d>=300 && cas.d<=300 && cas.g>=320 && cas.d-cas.c<=-20 && cas.c-cas.g<=0 && cas.d-cas.g<=-20);
-        cas.wait(0);
-        assertTrue(cas.c>=320 && cas.d>=300 && cas.d<=300 && cas.g>=320 && cas.d-cas.c<=-20 && cas.c-cas.g<=0 && cas.d-cas.g<=-20);
 //L7
         assertTrue(cas.locked && !cas.armed && !cas.closed && !cas.sound && !cas.flash);
         assertTrue(cas.c>=320 && cas.d>=300 && cas.g>=320 && cas.d-cas.c<=-20 && cas.c-cas.g<=0 && cas.d-cas.g<=-20);
@@ -481,11 +475,6 @@ public class NoBVANoPrefixTest {
         assertTrue(cas.c>=50 && cas.d>=30 && cas.d<=300 && cas.g>=50 && cas.d-cas.c<=-20 && cas.c-cas.g<=0 && cas.d-cas.g<=-20);
         cas.wait(270);
         assertTrue(cas.c>=50 && cas.d>=30 && cas.d<=300 && cas.g>=50 && cas.d-cas.c<=-20 && cas.c-cas.g<=0 && cas.d-cas.g<=-20);
-//L13
-        assertTrue(cas.locked && !cas.armed && !cas.closed && !cas.sound && cas.flash);
-        assertTrue(cas.c>=320 && cas.d>=300 && cas.d<=300 && cas.g>=320 && cas.d-cas.c<=-20 && cas.c-cas.g<=0 && cas.d-cas.g<=-20);
-        cas.wait(0);
-        assertTrue(cas.c>=320 && cas.d>=300 && cas.d<=300 && cas.g>=320 && cas.d-cas.c<=-20 && cas.c-cas.g<=0 && cas.d-cas.g<=-20);
 //L7
         assertTrue(cas.locked && !cas.armed && !cas.closed && !cas.sound && !cas.flash);
         assertTrue(cas.c>=320 && cas.d>=300 && cas.g>=320 && cas.d-cas.c<=-20 && cas.c-cas.g<=0 && cas.d-cas.g<=-20);
@@ -552,11 +541,6 @@ public class NoBVANoPrefixTest {
         assertTrue(cas.c>=50 && cas.d>=30 && cas.d<=300 && cas.g>=50 && cas.d-cas.c<=-20 && cas.c-cas.g<=0 && cas.d-cas.g<=-20);
         cas.wait(270);
         assertTrue(cas.c>=50 && cas.d>=30 && cas.d<=300 && cas.g>=50 && cas.d-cas.c<=-20 && cas.c-cas.g<=0 && cas.d-cas.g<=-20);
-//L13
-        assertTrue(cas.locked && !cas.armed && !cas.closed && !cas.sound && cas.flash);
-        assertTrue(cas.c>=320 && cas.d>=300 && cas.d<=300 && cas.g>=320 && cas.d-cas.c<=-20 && cas.c-cas.g<=0 && cas.d-cas.g<=-20);
-        cas.wait(0);
-        assertTrue(cas.c>=320 && cas.d>=300 && cas.d<=300 && cas.g>=320 && cas.d-cas.c<=-20 && cas.c-cas.g<=0 && cas.d-cas.g<=-20);
 //L7
         assertTrue(cas.locked && !cas.armed && !cas.closed && !cas.sound && !cas.flash);
         assertTrue(cas.c>=320 && cas.d>=300 && cas.g>=320 && cas.d-cas.c<=-20 && cas.c-cas.g<=0 && cas.d-cas.g<=-20);
@@ -708,9 +692,9 @@ public class NoBVANoPrefixTest {
         assertTrue(cas.c>=50 && cas.d>=30 && cas.d<=300 && cas.g>=50 && cas.d-cas.c<=-20 && cas.c-cas.g<=0 && cas.d-cas.g<=-20);
         cas.wait(270);
         assertTrue(cas.c>=50 && cas.d>=30 && cas.d<=300 && cas.g>=50 && cas.d-cas.c<=-20 && cas.c-cas.g<=0 && cas.d-cas.g<=-20);
-//L13
-        assertTrue(cas.locked && !cas.armed && !cas.closed && !cas.sound && cas.flash);
-        assertTrue(cas.c>=320 && cas.d>=300 && cas.d<=300 && cas.g>=320 && cas.d-cas.c<=-20 && cas.c-cas.g<=0 && cas.d-cas.g<=-20);
+//L7
+        assertTrue(cas.locked && !cas.armed && !cas.closed && !cas.sound && !cas.flash);
+        assertTrue(cas.c>=320 && cas.d>=300 && cas.g>=320 && cas.d-cas.c<=-20 && cas.c-cas.g<=0 && cas.d-cas.g<=-20);
     }
     @Test
     public void test17() {
@@ -823,70 +807,6 @@ public class NoBVANoPrefixTest {
         assertTrue(cas.c>=50 && cas.d>=30 && cas.d<=300 && cas.g>=50 && cas.d-cas.c<=-20 && cas.c-cas.g<=0 && cas.d-cas.g<=-20);
         cas.wait(270);
         assertTrue(cas.c>=50 && cas.d>=30 && cas.d<=300 && cas.g>=50 && cas.d-cas.c<=-20 && cas.c-cas.g<=0 && cas.d-cas.g<=-20);
-//L13
-        assertTrue(cas.locked && !cas.armed && !cas.closed && !cas.sound && cas.flash);
-        assertTrue(cas.c>=320 && cas.d>=300 && cas.d<=300 && cas.g>=320 && cas.d-cas.c<=-20 && cas.c-cas.g<=0 && cas.d-cas.g<=-20);
-        cas.wait(0);
-        assertTrue(cas.c>=320 && cas.d>=300 && cas.d<=300 && cas.g>=320 && cas.d-cas.c<=-20 && cas.c-cas.g<=0 && cas.d-cas.g<=-20);
-//L7
-        assertTrue(cas.locked && !cas.armed && !cas.closed && !cas.sound && !cas.flash);
-        assertTrue(cas.c>=320 && cas.d>=300 && cas.g>=320 && cas.d-cas.c<=-20 && cas.c-cas.g<=0 && cas.d-cas.g<=-20);
-    }
-    @Test
-    public void test19() {
-        assertTrue(cas.d-cas.c<=0 && cas.g-cas.c<=0 && cas.c-cas.d<=0 && cas.g-cas.d<=0 && cas.c-cas.g<=0 && cas.d-cas.g<=0);
-        cas.wait(0);
-        assertTrue(cas.d-cas.c<=0 && cas.g-cas.c<=0 && cas.c-cas.d<=0 && cas.g-cas.d<=0 && cas.c-cas.g<=0 && cas.d-cas.g<=0);
-//L1
-        cas.close();
-        assertTrue(!cas.locked && !cas.armed && cas.closed && !cas.sound && !cas.flash);
-        assertTrue(cas.d-cas.c<=0 && cas.g-cas.c<=0 && cas.c-cas.d<=0 && cas.g-cas.d<=0 && cas.c-cas.g<=0 && cas.d-cas.g<=0);
-        cas.wait(0);
-        assertTrue(cas.d-cas.c<=0 && cas.g-cas.c<=0 && cas.c-cas.d<=0 && cas.g-cas.d<=0 && cas.c-cas.g<=0 && cas.d-cas.g<=0);
-//L3
-        cas.lock();
-        assertTrue(cas.locked && !cas.armed && cas.closed && !cas.sound && !cas.flash);
-        cas.c = 0;
-        assertTrue(cas.c<=20 && cas.c-cas.d<=0 && cas.g-cas.d<=0 && cas.c-cas.g<=0 && cas.d-cas.g<=0);
-        cas.wait(20);
-        assertTrue(cas.c<=20 && cas.c-cas.d<=0 && cas.g-cas.d<=0 && cas.c-cas.g<=0 && cas.d-cas.g<=0);
-//L4
-        assertTrue(cas.locked && cas.armed && cas.closed && !cas.sound && !cas.flash);
-        assertTrue(cas.c>=20 && cas.d>=20 && cas.g>=20 && cas.c-cas.d<=0 && cas.g-cas.d<=0 && cas.c-cas.g<=0 && cas.d-cas.g<=0);
-        cas.wait(0);
-        assertTrue(cas.c>=20 && cas.d>=20 && cas.g>=20 && cas.c-cas.d<=0 && cas.g-cas.d<=0 && cas.c-cas.g<=0 && cas.d-cas.g<=0);
-//L8
-        cas.open();
-        assertTrue(cas.locked && cas.armed && !cas.closed && !cas.sound && !cas.flash);
-        cas.d = 0;
-        assertTrue(cas.c>=20 && cas.g>=20 && cas.d-cas.c<=-20 && cas.c-cas.g<=0 && cas.d-cas.g<=-20);
-        cas.wait(0);
-        assertTrue(cas.c>=20 && cas.g>=20 && cas.d-cas.c<=-20 && cas.c-cas.g<=0 && cas.d-cas.g<=-20);
-//L9
-        assertTrue(cas.locked && !cas.armed && !cas.closed && !cas.sound && !cas.flash);
-        assertTrue(cas.c>=20 && cas.g>=20 && cas.d-cas.c<=-20 && cas.c-cas.g<=0 && cas.d-cas.g<=-20);
-        cas.wait(0);
-        assertTrue(cas.c>=20 && cas.g>=20 && cas.d-cas.c<=-20 && cas.c-cas.g<=0 && cas.d-cas.g<=-20);
-//L15
-        assertTrue(cas.locked && !cas.armed && !cas.closed && !cas.sound && cas.flash);
-        assertTrue(cas.c>=20 && cas.g>=20 && cas.d-cas.c<=-20 && cas.c-cas.g<=0 && cas.d-cas.g<=-20);
-        cas.wait(0);
-        assertTrue(cas.c>=20 && cas.g>=20 && cas.d-cas.c<=-20 && cas.c-cas.g<=0 && cas.d-cas.g<=-20);
-//L10
-        assertTrue(cas.locked && !cas.armed && !cas.closed && cas.sound && cas.flash);
-        assertTrue(cas.c>=20 && cas.d<=30 && cas.g>=20 && cas.d-cas.c<=-20 && cas.c-cas.g<=0 && cas.d-cas.g<=-20);
-        cas.wait(30);
-        assertTrue(cas.c>=20 && cas.d<=30 && cas.g>=20 && cas.d-cas.c<=-20 && cas.c-cas.g<=0 && cas.d-cas.g<=-20);
-//L12
-        assertTrue(cas.locked && !cas.armed && !cas.closed && !cas.sound && cas.flash);
-        assertTrue(cas.c>=50 && cas.d>=30 && cas.d<=300 && cas.g>=50 && cas.d-cas.c<=-20 && cas.c-cas.g<=0 && cas.d-cas.g<=-20);
-        cas.wait(270);
-        assertTrue(cas.c>=50 && cas.d>=30 && cas.d<=300 && cas.g>=50 && cas.d-cas.c<=-20 && cas.c-cas.g<=0 && cas.d-cas.g<=-20);
-//L13
-        assertTrue(cas.locked && !cas.armed && !cas.closed && !cas.sound && cas.flash);
-        assertTrue(cas.c>=320 && cas.d>=300 && cas.d<=300 && cas.g>=320 && cas.d-cas.c<=-20 && cas.c-cas.g<=0 && cas.d-cas.g<=-20);
-        cas.wait(0);
-        assertTrue(cas.c>=320 && cas.d>=300 && cas.d<=300 && cas.g>=320 && cas.d-cas.c<=-20 && cas.c-cas.g<=0 && cas.d-cas.g<=-20);
 //L7
         assertTrue(cas.locked && !cas.armed && !cas.closed && !cas.sound && !cas.flash);
         assertTrue(cas.c>=320 && cas.d>=300 && cas.g>=320 && cas.d-cas.c<=-20 && cas.c-cas.g<=0 && cas.d-cas.g<=-20);
@@ -904,7 +824,7 @@ public class NoBVANoPrefixTest {
         assertTrue(cas.c>20 && cas.g>=320 && cas.d-cas.c<-20 && cas.c-cas.g<=0 && cas.d-cas.g<=-320);
     }
     @Test
-    public void test20() {
+    public void test19() {
         assertTrue(cas.d-cas.c<=0 && cas.g-cas.c<=0 && cas.c-cas.d<=0 && cas.g-cas.d<=0 && cas.c-cas.g<=0 && cas.d-cas.g<=0);
         cas.wait(0);
         assertTrue(cas.d-cas.c<=0 && cas.g-cas.c<=0 && cas.c-cas.d<=0 && cas.g-cas.d<=0 && cas.c-cas.g<=0 && cas.d-cas.g<=0);
@@ -965,7 +885,7 @@ public class NoBVANoPrefixTest {
         assertTrue(cas.c>=20 && cas.g>=20 && cas.d-cas.c<=-20 && cas.c-cas.g<=0 && cas.d-cas.g<=-20);
     }
     @Test
-    public void test21() {
+    public void test20() {
         assertTrue(cas.d-cas.c<=0 && cas.g-cas.c<=0 && cas.c-cas.d<=0 && cas.g-cas.d<=0 && cas.c-cas.g<=0 && cas.d-cas.g<=0);
         cas.wait(0);
         assertTrue(cas.d-cas.c<=0 && cas.g-cas.c<=0 && cas.c-cas.d<=0 && cas.g-cas.d<=0 && cas.c-cas.g<=0 && cas.d-cas.g<=0);
@@ -1044,7 +964,7 @@ public class NoBVANoPrefixTest {
         assertTrue(cas.c>=20 && cas.d>=20 && cas.g>=40 && cas.c-cas.d<=0 && cas.c-cas.g<=-20 && cas.d-cas.g<=-20);
     }
     @Test
-    public void test22() {
+    public void test21() {
         assertTrue(cas.d-cas.c<=0 && cas.g-cas.c<=0 && cas.c-cas.d<=0 && cas.g-cas.d<=0 && cas.c-cas.g<=0 && cas.d-cas.g<=0);
         cas.wait(0);
         assertTrue(cas.d-cas.c<=0 && cas.g-cas.c<=0 && cas.c-cas.d<=0 && cas.g-cas.d<=0 && cas.c-cas.g<=0 && cas.d-cas.g<=0);
@@ -1088,7 +1008,7 @@ public class NoBVANoPrefixTest {
         assertTrue(cas.c>=20 && cas.d<=30 && cas.g>=20 && cas.d-cas.c<=-20 && cas.c-cas.g<=0 && cas.d-cas.g<=-20);
     }
     @Test
-    public void test23() {
+    public void test22() {
         assertTrue(cas.d-cas.c<=0 && cas.g-cas.c<=0 && cas.c-cas.d<=0 && cas.g-cas.d<=0 && cas.c-cas.g<=0 && cas.d-cas.g<=0);
         cas.wait(0);
         assertTrue(cas.d-cas.c<=0 && cas.g-cas.c<=0 && cas.c-cas.d<=0 && cas.g-cas.d<=0 && cas.c-cas.g<=0 && cas.d-cas.g<=0);
@@ -1137,7 +1057,7 @@ public class NoBVANoPrefixTest {
         assertTrue(cas.c>=50 && cas.d>=30 && cas.d<=300 && cas.g>=50 && cas.d-cas.c<=-20 && cas.c-cas.g<=0 && cas.d-cas.g<=-20);
     }
     @Test
-    public void test24() {
+    public void test23() {
         assertTrue(cas.d-cas.c<=0 && cas.g-cas.c<=0 && cas.c-cas.d<=0 && cas.g-cas.d<=0 && cas.c-cas.g<=0 && cas.d-cas.g<=0);
         cas.wait(0);
         assertTrue(cas.d-cas.c<=0 && cas.g-cas.c<=0 && cas.c-cas.d<=0 && cas.g-cas.d<=0 && cas.c-cas.g<=0 && cas.d-cas.g<=0);
@@ -1192,5 +1112,6 @@ public class NoBVANoPrefixTest {
         assertTrue(!cas.locked && !cas.armed && !cas.closed && !cas.sound && cas.flash);
         assertTrue(cas.c>=20 && cas.g>=20 && cas.d-cas.c<=-20 && cas.c-cas.g<=0 && cas.d-cas.g<=-20);
     }
+
 
 }
