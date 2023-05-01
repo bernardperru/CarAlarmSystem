@@ -4,7 +4,7 @@ public class CoffeeMachine {
 
     public boolean button;
     public enum Loc {L0, L1, L2, L3, L4};
-    public int x, y;
+    public int x, y, g;
     public Loc location = Loc.L0;
     public boolean grinding, brewing, coffee;
 
@@ -53,27 +53,31 @@ public class CoffeeMachine {
                 case L1:
                     if (x < 10) {
                         grinding();
-                        y = 0;
+                        return;
                     }
+                    break;
                 case L2:
                     if (x > 8){
                         brewing();
+                        return;
                     }
+                    break;
                 case L3:
                     if (y == 5){
                         coffee();
+                        return;
                     }
+                    break;
                 default:
                     break;
             }
             if (delay > 0) {
                 x++;
                 y++;
-                delay--;
+                g++;
             }
-            else {
-                break;
-            }
+            delay--;
+
         }
     }
 }

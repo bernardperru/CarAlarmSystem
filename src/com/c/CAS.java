@@ -9,6 +9,8 @@ public class CAS {
      public int c,d, g;
      private enum Loc { L0, L1, L2, L3, L4, L5, L6, L7, L8, L9, L10, L11, L12, L14, L15};
      private Loc location;
+
+     private int buffer = 0;
      public CAS() {
         location = Loc.L0;
     }
@@ -166,65 +168,77 @@ public class CAS {
         }
     }
     public void wait (int delay){
+         delay = delay + buffer;
         while (delay >= 0) {
             switch (location) {
                 case L3:
                     if (c == 20) {
                         armedOn();
+                        buffer = delay;
                         return;
                     }
                     break;
                 case L10:
-                    if (d == 30) {
+                    int x = 30;
+                    if (d == x) {
                         soundOff();
+                        buffer = delay;
                         return;
                     }
                     break;
                 case L8:
                     if (d == 0) {
                         armedOff();
+                        buffer = delay;
                         return;
                     }
                     break;
                 case L6:
                     if (d == 0) {
                         armedOff();
+                        buffer = delay;
                         return;
                     }
                     break;
                 case L9:
                     if (d == 0) {
                         flashOn();
+                        buffer = delay;
                         return;
                     }
                     break;
                 case L15:
                     if (d == 0) {
                         soundOn();
+                        buffer = delay;
                         return;
                     }
                     break;
                 case L11:
                     if (d == 0) {
                         soundOff();
+                        buffer = delay;
                         return;
                     }
                     break;
                 case L14:
                     if (d == 0) {
                         flashOff();
+                        buffer = delay;
                         return;
                     }
                     break;
                 case L12:
                     if (d == 300) {
                         flashOff();
+                        buffer = delay;
                         return;
                     }
                     break;
                 case L5:
                     if (d == 0) {
                         armedOn();
+                        buffer = delay;
                         return;
                     }
                     break;
