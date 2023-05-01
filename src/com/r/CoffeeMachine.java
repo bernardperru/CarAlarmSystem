@@ -8,7 +8,6 @@ public class CoffeeMachine {
     public Loc location = Loc.L0;
     public boolean grinding, brewing, coffee;
 
-
     public CoffeeMachine() {}
 
     public void button() {
@@ -16,6 +15,7 @@ public class CoffeeMachine {
             case L0:
                 button = true;
                 location = Loc.L1;
+                break;
             default:
                 break;
         }
@@ -26,6 +26,7 @@ public class CoffeeMachine {
             case L1:
                 grinding = true;
                 location = Loc.L2;
+                break;
             default:
                 break;
         }
@@ -36,6 +37,9 @@ public class CoffeeMachine {
             case L2:
                 brewing = true;
                 location = Loc.L3;
+                break;
+            default:
+                break;
         }
     }
 
@@ -44,6 +48,9 @@ public class CoffeeMachine {
             case L3:
                 coffee = true;
                 location = Loc.L4;
+                break;
+            default:
+                break;
         }
     }
 
@@ -54,6 +61,7 @@ public class CoffeeMachine {
                     if (x < 10) {
                         grinding();
                         return;
+
                     }
                     break;
                 case L2:
@@ -63,7 +71,7 @@ public class CoffeeMachine {
                     }
                     break;
                 case L3:
-                    if (y == 5){
+                    if (y <= 5 && y == 5){
                         coffee();
                         return;
                     }
