@@ -5,7 +5,7 @@ import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;
 
 
-public class CoffeeTeaMachineTest {
+public class CTNoBva {
 
     CoffeeTeaMachine cof = new CoffeeTeaMachine();
 
@@ -136,22 +136,21 @@ public class CoffeeTeaMachineTest {
 //L5 Exit
         assertTrue(!cof.coin && !cof.pouringCoffee && !cof.pouringTea && !cof.coffee && !cof.tea);
 //L0 Enter
-        assertTrue(cof.x>=8 && cof.g>=8 && cof.x-cof.g<=0);
+        assertTrue(cof.x>=10 && cof.g>=10 && cof.x-cof.g<=0);
         cof.wait(20);
-        assertTrue(cof.x>=8 && cof.g>=8 && cof.x-cof.g<=0);
+        assertTrue(cof.x>=10 && cof.g>=10 && cof.x-cof.g<=0);
 //L0 Exit
         cof.coin();
         assertTrue(cof.coin && !cof.pouringCoffee && !cof.pouringTea && !cof.coffee && !cof.tea);
         cof.x = 0;
 //L1 Enter
-        assertTrue(cof.x<=5 && cof.g>=8 && cof.x-cof.g<=-8);
+        assertTrue(cof.x<=5 && cof.g>=10 && cof.x-cof.g<=-10);
         cof.wait(5);
-        assertTrue(cof.x<=5 && cof.g>=8 && cof.x-cof.g<=-8);
+        assertTrue(cof.x<=5 && cof.g>=10 && cof.x-cof.g<=-10);
 //L1 Exit
         assertTrue(!cof.coin && !cof.pouringCoffee && !cof.pouringTea && !cof.coffee && !cof.tea);
 //L0 Enter
-        assertTrue(cof.x>=5 && cof.g>=13 && cof.x-cof.g<=-8);
+        assertTrue(cof.x>=5 && cof.g>=15 && cof.x-cof.g<=-10);
     }
-
 
 }
